@@ -22,10 +22,10 @@ public class Controller {
     @FXML
     Button btnSign, btnDot, btnEqual, btnPlus, btnMinus, btnTimes, btnDiv, btnPercentage;
     @FXML
-    Button btnDelete, btnCancel;
+    Button btnBackspace, btnCancel;
 
     //Variable declaration
-    String result;
+    String result = "";
     int op1, op2; //op1 stores current result
 
 
@@ -55,6 +55,48 @@ public class Controller {
         result = result.concat("3");
         lblResult.setText("btn3");
         System.out.println("btn3");
+    }
+
+    @FXML
+    public void btn4Click(ActionEvent event) {
+        result = result.concat("4");
+        lblResult.setText("btn4");
+        System.out.println("btn4");
+    }
+
+    @FXML
+    public void btn5Click(ActionEvent event) {
+        result = result.concat("5");
+        lblResult.setText("btn5");
+        System.out.println("btn5");
+    }
+
+    @FXML
+    public void btn6Click(ActionEvent event) {
+        result = result.concat("6");
+        lblResult.setText("btn6");
+        System.out.println("btn6");
+    }
+
+    @FXML
+    public void btn7Click(ActionEvent event) {
+        result = result.concat("7");
+        lblResult.setText("btn7");
+        System.out.println("btn7");
+    }
+
+    @FXML
+    public void btn8Click(ActionEvent event) {
+        result = result.concat("8");
+        lblResult.setText("btn8");
+        System.out.println("btn8");
+    }
+
+    @FXML
+    public void btn9Click(ActionEvent event) {
+        result = result.concat("9");
+        lblResult.setText("btn9");
+        System.out.println("btn9");
     }
 
     @FXML
@@ -89,6 +131,21 @@ public class Controller {
 
     @FXML
     public void btnDivClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void btnPercentageClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void btnBackspaceClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void btnCancelClick(ActionEvent event) {
 
     }
 

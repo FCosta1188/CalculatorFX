@@ -22,23 +22,70 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="btn1" layoutX="4.0" layoutY="446.0" mnemonicParsing="false" onAction="#btn1Click" prefHeight="50.0" prefWidth="70.0" text="1">
+      <Button fx:id="btn1" layoutX="4.0" layoutY="392.0" mnemonicParsing="false" onAction="#btn1Click" prefHeight="50.0" prefWidth="70.0" text="1">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="btn2" layoutX="78.0" layoutY="446.0" mnemonicParsing="false" onAction="#btn2Click" prefHeight="50.0" prefWidth="70.0" text="2">
+      <Button fx:id="btn2" layoutX="78.0" layoutY="392.0" mnemonicParsing="false" onAction="#btn2Click" prefHeight="50.0" prefWidth="70.0" text="2">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="btn3" layoutX="152.0" layoutY="446.0" mnemonicParsing="false" onAction="#btn3Click" prefHeight="50.0" prefWidth="70.0" text="3">
+      <Button fx:id="btn3" layoutX="152.0" layoutY="392.0" mnemonicParsing="false" onAction="#btn3Click" prefHeight="50.0" prefWidth="70.0" text="3">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="btnPlus" layoutX="226.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnPlusClick" prefHeight="50.0" prefWidth="70.0" text="+">
+      <Button fx:id="btnPlus" layoutX="226.0" layoutY="392.0" mnemonicParsing="false" onAction="#btnPlusClick" prefHeight="50.0" prefWidth="70.0" text="+">
          <font>
             <Font size="24.0" />
          </font></Button>
-
+      <Button fx:id="btn4" layoutX="4.0" layoutY="338.0" mnemonicParsing="false" onAction="#btn4Click" prefHeight="50.0" prefWidth="70.0" text="4">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btn5" layoutX="78.0" layoutY="338.0" mnemonicParsing="false" onAction="#btn5Click" prefHeight="50.0" prefWidth="70.0" text="5">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btn6" layoutX="152.0" layoutY="338.0" mnemonicParsing="false" onAction="#btn6Click" prefHeight="50.0" prefWidth="70.0" text="6">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnMinus" layoutX="226.0" layoutY="338.0" mnemonicParsing="false" onAction="#btnMinusClick" prefHeight="50.0" prefWidth="70.0" text="-">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btn7" layoutX="4.0" layoutY="284.0" mnemonicParsing="false" onAction="#btn7Click" prefHeight="50.0" prefWidth="70.0" text="7">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btn8" layoutX="78.0" layoutY="284.0" mnemonicParsing="false" onAction="#btn8Click" prefHeight="50.0" prefWidth="70.0" text="8">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btn9" layoutX="152.0" layoutY="284.0" mnemonicParsing="false" onAction="#btn9Click" prefHeight="50.0" prefWidth="70.0" text="9">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnTimes" layoutX="226.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnTimesClick" prefHeight="50.0" prefWidth="70.0" text="X">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnCancel" layoutX="4.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnCancelClick" prefHeight="50.0" prefWidth="70.0" text="C">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnBackspace" layoutX="78.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnBackspaceClick" prefHeight="50.0" prefWidth="70.0" text="bsp">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnPercentage" layoutX="152.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnPercentageClick" prefHeight="50.0" prefWidth="70.0" text="%">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnDiv" layoutX="226.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnDivClick" prefHeight="50.0" prefWidth="70.0" text="/">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
       <Label fx:id="lblResult" alignment="CENTER_RIGHT" layoutX="4.0" layoutY="144.0" prefHeight="50.0" prefWidth="284.0" text="0">
          <font>
             <Font name="Consolas Bold" size="40.0" />
