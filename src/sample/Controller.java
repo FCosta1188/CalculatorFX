@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class Controller {
@@ -30,6 +31,7 @@ public class Controller {
 
     //Variable declaration
     String result = "";
+    //StringBuilder result = new StringBuilder();
     float op1 = 0;
     float op2 = 0;
     float r = 0;
@@ -37,7 +39,32 @@ public class Controller {
     String lastBtnClick = ""; //last button clicked
 
 
-    public static String trimDecZeroes(String s) {
+    public static String trimDecZeroes(String str) {
+
+       if (!(str.contains("."))) { // 25 -> 25
+           return str;
+       } else if (str.endsWith(".")) { // using split on "25." returns ArrayIndexOutOfBound
+           return str.substring(0, str.length() - 1); // 25. -> 25
+       } else {
+           String[] strArray = str.split("\\.");
+           String strDec = strArray[1];
+
+           for (int i = 0; i < strArray[1].length(); i++) { //loop through the decimal portion of the number
+               if ((strDec.endsWith("0")) && (strDec.length() > 1)) { //to avoid out of bound
+                   strDec = strDec.substring(0, strDec.length() - 1); // delete last character
+               } else if ((strDec.endsWith("0")) && (strDec.length() == 1)) {
+                   strDec = "";
+                   break;
+               } else { //s does not end with 0
+                   break;
+               }
+           }//for
+
+           return strArray[0].concat("." + strDec); //int.trimmedDec
+
+       }//trimDecZeroes
+
+        /*
         String [] sArray = s.split(".");
         s = sArray[1];
 
@@ -52,23 +79,21 @@ public class Controller {
             }
         }
 
-        if (s.equals(""))
-            return sArray[0]; //int portion of the number
-        else
-            return sArray[0].concat("." + s); //int.trimmedDec
+         */
     }
 
 
     @FXML
     public void btn0Click(ActionEvent event) {
         result = result.concat("0");
-        lblResult.setText(result);
+        //result = result.append("0"); StringBuilder
+        lblResult.setText(result.toString());
     }
 
     @FXML
     public void btn1Click(ActionEvent event) {
         result = result.concat("1");
-        lblResult.setText(result);
+        lblResult.setText(result.toString());
     }
 
     @FXML
@@ -126,10 +151,16 @@ public class Controller {
 
     @FXML
     public void btnDotClick(ActionEvent event) {
-        result = result.concat(".");
+        if (lblResult.getText().equals("") || lblResult.getText().equals("0")) {
+            result = result.concat("0.");
+        } else if (!(lblResult.getText().contains("."))) {
+            result = result.concat(".");
+        }
+
         lblResult.setText(result);
         System.out.println("btnDot");
     }
+
 
     @FXML
     public void btnEqualClick(ActionEvent event) {
@@ -153,6 +184,7 @@ public class Controller {
 
         operation = false;
         result = "";
+        //result.delete(0, result.capacity() - 1); StringBuilder
         lblResult.setText(Float.toString(r)); //Float.toString also trims zeroes on the left
         //lblResult.setText(trimDecZeroes(Float.toString(r)));
         r = 0;
@@ -233,6 +265,7 @@ public class Controller {
         lblResult.setText("0");
     }
 
+
     //Key presses (https://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCode.html)
     public void keyPress(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER)
@@ -296,6 +329,5 @@ public class Controller {
         else if (keyEvent.getCode() == KeyCode.NUMPAD9)
             btn9.fire();
     }
-
 
 }//Controller
