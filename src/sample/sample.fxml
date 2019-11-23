@@ -92,7 +92,7 @@
             <Font name="Consolas Bold" size="40.0" />
          </font>
       </Label>
-      <Label fx:id="lblExpression" alignment="CENTER_RIGHT" layoutX="6.0" layoutY="201.0" prefWidth="284.0" text="expression">
+      <Label fx:id="lblExpression" alignment="CENTER_RIGHT" layoutX="6.0" layoutY="201.0" prefWidth="284.0">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>

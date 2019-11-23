@@ -30,13 +30,14 @@ public class Controller {
     Button btnBackspace, btnCancel;
 
     //Variable declaration
-    String result = "";
+    String result = ""; //display current result
     //StringBuilder result = new StringBuilder();
+    StringBuilder expression = new StringBuilder();
     float op1 = 0;
     float op2 = 0;
-    float r = 0;
+    float r = 0; //store current result
     boolean operation = false;
-    String lastBtnClick = ""; //last button clicked
+    String lastBtnClick = ""; //last operation button clicked
 
 
     public static String trimDecZeroes(String str) {
@@ -53,47 +54,31 @@ public class Controller {
                if ((strDec.endsWith("0")) && (strDec.length() > 1)) { //to avoid out of bound
                    strDec = strDec.substring(0, strDec.length() - 1); // delete last character
                } else if ((strDec.endsWith("0")) && (strDec.length() == 1)) {
-                   strDec = "";
-                   break;
+                   //strDec = "";
+                   return strArray[0];
+                   //break;
                } else { //s does not end with 0
                    break;
                }
            }//for
 
            return strArray[0].concat("." + strDec); //int.trimmedDec
+       }
 
-       }//trimDecZeroes
-
-        /*
-        String [] sArray = s.split(".");
-        s = sArray[1];
-
-        for (int i = 0; i < sArray[1].length(); i++) { //loop through the decimal portion of the number
-            if ((s.endsWith("0")) && (s.length() >= 2)) { //to avoid out of bound
-                s = s.substring(0, s.length() - 2);
-            } else if ((s.endsWith("0")) && (s.length() == 1)) {
-                s = "";
-                break;
-            } else { //s does not end with 0
-                break;
-            }
-        }
-
-         */
-    }
+    }//trimDecZeroes()
 
 
     @FXML
     public void btn0Click(ActionEvent event) {
         result = result.concat("0");
         //result = result.append("0"); StringBuilder
-        lblResult.setText(result.toString());
+        lblResult.setText(result);
     }
 
     @FXML
     public void btn1Click(ActionEvent event) {
         result = result.concat("1");
-        lblResult.setText(result.toString());
+        lblResult.setText(result);
     }
 
     @FXML
@@ -168,26 +153,32 @@ public class Controller {
         switch (lastBtnClick) {
             case "plus":
                 r = r + Float.parseFloat(lblResult.getText());
+                lblResult.setText(trimDecZeroes(Float.toString(r)));
                 break;
             case "minus":
                 r = r - Float.parseFloat(lblResult.getText());
+                lblResult.setText(trimDecZeroes(Float.toString(r))); //Float.toString also trims zeroes on the left
                 break;
             case "times":
                 r = r * Float.parseFloat(lblResult.getText());
+                lblResult.setText(trimDecZeroes(Float.toString(r)));
                 break;
             case "div":
                 r = r / Float.parseFloat(lblResult.getText());
+                lblResult.setText(trimDecZeroes(Float.toString(r)));
                 break;
             default:
-                //implement default
+                lblResult.setText(trimDecZeroes(result));
+                break;
         }
 
         operation = false;
-        result = "";
         //result.delete(0, result.capacity() - 1); StringBuilder
-        lblResult.setText(Float.toString(r)); //Float.toString also trims zeroes on the left
-        //lblResult.setText(trimDecZeroes(Float.toString(r)));
+        result = "";
         r = 0;
+
+        expression.delete(0, expression.length() - 1); //initialize StringBuilder
+        lblExpression.setText(expression.toString());
     }
 
     @FXML
@@ -203,10 +194,14 @@ public class Controller {
             operation = false;
         }
         */
+
         r += Float.parseFloat(lblResult.getText());
         result = "";
-        lblResult.setText(Float.toString(r));
+        lblResult.setText(trimDecZeroes(Float.toString(r)));
         lastBtnClick = "plus";
+
+        expression.append(trimDecZeroes(Float.toString(r)) + " + ");
+        lblExpression.setText(trimDecZeroes(expression.toString()));
     }
 
     @FXML
@@ -216,16 +211,22 @@ public class Controller {
         else
             r -= Float.parseFloat(lblResult.getText());
         result = "";
-        lblResult.setText(Float.toString(r));
+        lblResult.setText(trimDecZeroes(Float.toString(r)));
         lastBtnClick = "minus";
+
+        expression.append(trimDecZeroes(Float.toString(r)) + " - ");
+        lblExpression.setText(trimDecZeroes(expression.toString()));
     }
 
     @FXML
     public void btnTimesClick(ActionEvent event) {
         r *= Float.parseFloat(lblResult.getText());
         result = "";
-        lblResult.setText(Float.toString(r));
+        lblResult.setText(trimDecZeroes(Float.toString(r)));
         lastBtnClick = "times";
+
+        expression.append(trimDecZeroes(Float.toString(r)) + " × ");
+        lblExpression.setText(trimDecZeroes(expression.toString()));
     }
 
     @FXML
@@ -235,10 +236,13 @@ public class Controller {
             lblResult.setText("0");
         } else {
             r /= Float.parseFloat(lblResult.getText());
-            lblResult.setText(Float.toString(r));
+            lblResult.setText(trimDecZeroes(Float.toString(r)));
         }
         result = "";
-        lastBtnClick = "times";
+        lastBtnClick = "div";
+
+        expression.append(trimDecZeroes(Float.toString(r)) + " ÷ ");
+        lblExpression.setText(trimDecZeroes(expression.toString()));
     }
 
     @FXML
@@ -263,6 +267,9 @@ public class Controller {
         r = op1 = op2 = 0;
         operation = false;
         lblResult.setText("0");
+
+        expression.delete(0, expression.length() - 1); //initialize StringBuilder
+        lblExpression.setText(expression.toString());
     }
 
 
